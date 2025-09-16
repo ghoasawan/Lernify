@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -7,22 +7,32 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
 export default function Header() {
-
-
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   function handleClose() {
     if (isSidebarOpen) setIsSidebarOpen(false);
     else setIsSidebarOpen(true);
   }
 
+  useEffect(() => {
+    if (window.scrollY > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  }, []);
 
   return (
     <div className="relative font-poppins">
-      <div className="fixed w-full ">
-        <div className="grid w-full grid-cols-12 h-[80px]  font-poppins ">
+      <div className=" w-full ">
+        <div
+          className={`grid w-full grid-cols-12 h-[80px]  font-poppins ${
+            scrolled ? "bg-amber-400" : "none"
+          } `}
+        >
           <div className="col-span-6 md:col-span-3 flex justify-center items-center text-[33px] lg:text-[40px] font-semibold text-gray-600 ">
             Lernify
           </div>
@@ -63,12 +73,12 @@ export default function Header() {
       {/* Side Bar */}
 
       <div
-        className={`absolute w-full h-[100vh] bg-gray-50 px-[20px] sm:px-[40px] pt-[20px] ${
+        className={`absolute top-0  w-full h-[100vh] bg-gray-50 px-[20px] sm:px-[40px] pt-[20px] ${
           isSidebarOpen ? "translate-x-0" : " -translate-x-full"
         } transform transition-transform duration-700 ease-in-out`}
       >
         <div className="flex justify-between items-center">
-          <span className="text-[28px] sm:text-[40px] text-gray-700">
+          <span className="text-[28px] sm:text-[40px] text-gray-600 font-semibold">
             Lernify
           </span>
           <span className="flex gap-4 items-center">
