@@ -6,54 +6,41 @@ import SplitText from "../Components/SplitText/splitText";
 
 export default function Home() {
   return (
-    <div className="font-poppins">
-      {/* hero section */}
-      <div className="grid grid-cols-12 mx-[70px] xl:mx-[120px] py-[70px] xl:py-[100px] items-center gap-10">
-        <motion.div
-          className="col-span-7 flex flex-col gap-10 items-start px-[25px]"
-          initial={{ x: -200, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }} // smooth transition
+    <div className="grid grid-cols-12 py-[60px] xl:py-[100px] mx-[100px] font-poppins ">
+      <div className="col-span-12 lg:col-span-7 flex flex-col gap-6 xl:gap-10 justify-center items-center lg:items-start ">
+        <p className= "text-[30px] md:text-[35px] xl:text-[50px] font-semibold md:text-center lg:text-start">
+          LOOKING FOR <span className="text-orange-400">TUTORS</span>? WE GOT
+          YOU COVERED
+        </p>
+        <SplitText
+          text="Lernify — Where Learning Meets Success."
+          className="text-2xl font-semibold text-gray-600"
+          delay={20}
+          duration={0.2}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+        />
+        <p className="text-justify text-gray-400">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+          itaque ipsa ipsam ullam earum cumque nesciunt praesentium ea iste
+          ratione dicta libero similique repudiandae, est esse. Voluptatem eius
+          eveniet minima mollitia animi, porro aliquam, a excepturi fuga
+          perferendis, neque ducimus!
+        </p>
+        <Button
+          variant="contained"
+          size="medium"
+          className="!bg-orange-400 w-[30%]"
         >
-          <p className="lg:text-[40px] xl:text-[60px] font-semibold">
-            Looking for <span className="text-orange-400 ">Tutors?</span>Lernify
-            got you covered
-          </p>
-          <SplitText
-            text="Lernify — Where Learning Meets Success.!"
-            className="lg:text-[20px] xl:text-2xl font-semibold text-center text-gray-600"
-            delay={40}
-            duration={0.2}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-          />
-          <div className="flex flex-col gap-6">
-            <p className="text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem et
-              aut cumque maxime suscipit eaque dolor consectetur amet eligendi
-              facere
-            </p>
-
-            <Button
-              size="medium"
-              variant="contained"
-              className="!bg-orange-400 w-[30%]"
-            >
-              Find Tutors
-            </Button>
-          </div>
-        </motion.div>
-
-
-        <div className="col-span-5 flex justify-center items-center">
-            <img src={herosectionImage} alt="image here" className=" object-cover  w-[80%]" />
-        </div>
+          Get Started
+        </Button>
+      </div>
+      <div className="hidden lg: col-span-5 lg:flex justify-center items-center">
+        <img src={herosectionImage} alt="image hrer" className="w-[70%]" />
       </div>
     </div>
   );
