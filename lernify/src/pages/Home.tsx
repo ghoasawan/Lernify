@@ -6,15 +6,15 @@ import SplitText from "../Components/SplitText/splitText";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-12 py-[60px] xl:py-[100px] mx-[100px] font-poppins ">
+    <div className="grid grid-cols-12 py-[40px] md:py-[60px] xl:py-[100px] mx-[50px] md:mx-[100px] font-poppins ">
       <div className="col-span-12 lg:col-span-7 flex flex-col gap-6 xl:gap-10 justify-center items-center lg:items-start ">
-        <p className= "text-[30px] md:text-[35px] xl:text-[50px] font-semibold md:text-center lg:text-start">
+        <p className= "text-[20px] sm:text-[30px] md:text-[35px] xl:text-[50px] font-semibold text-center lg:text-start">
           LOOKING FOR <span className="text-orange-400">TUTORS</span>? WE GOT
           YOU COVERED
         </p>
         <SplitText
           text="Lernify — Where Learning Meets Success."
-          className="text-2xl font-semibold text-gray-600"
+          className="text-[16px] sm:text-2xl font-semibold text-gray-600 z-[-1] "
           delay={20}
           duration={0.2}
           ease="power3.out"
@@ -24,7 +24,7 @@ export default function Home() {
           threshold={0.1}
           rootMargin="-100px"
         />
-        <p className="text-justify text-gray-400">
+        <p className="text-justify text-gray-400 text-[12px] sm:text-[14px] md:text-[16px] ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
           itaque ipsa ipsam ullam earum cumque nesciunt praesentium ea iste
           ratione dicta libero similique repudiandae, est esse. Voluptatem eius
@@ -34,7 +34,7 @@ export default function Home() {
         <Button
           variant="contained"
           size="medium"
-          className="!bg-orange-400 w-[30%]"
+          className="!bg-orange-400 sm:w-[30%] w-[45%] !text-[10px] sm:!text-[12px] md:!text-[16px] z-[-1]"
         >
           Get Started
         </Button>
