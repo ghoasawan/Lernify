@@ -5,7 +5,6 @@ import herosectionImage from "../images/thomas-park-6MePtA9EVDA-unsplash.jpg";
 import SplitText from "../Components/SplitText/splitText";
 import Card from "../Components/Card/Card";
 import { IoBookSharp } from "react-icons/io5";
-import Background from "../Components/Background/background";
 import GroupIcon from "@mui/icons-material/Group";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import Slider from "react-slick";
@@ -13,13 +12,77 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProfileCard from "../Components/ProfileCard/ProfileCard";
 
+import { BackgroundBeams } from "../Components/Background/background";
+
 export default function Home() {
+  const NextArrow = ({ onClick }) => {
+    return (
+      <div
+        onClick={onClick}
+        className="absolute right-2 top-0 -translate-y-1/2 z-10 cursor-pointer bg-orange-400 text-white p-2 rounded-full hover:bg-black"
+      >
+        ➜
+      </div>
+    );
+  };
+
+  const PrevArrow = ({ onClick }) => {
+    return (
+      <div
+        onClick={onClick}
+        className="absolute left-2 top-0 -translate-y-1/2 z-10 cursor-pointer bg-orange-400 text-white p-2 rounded-full hover:bg-black"
+      >
+        ←
+      </div>
+    );
+  };
+  const teachers = [
+    {
+      image: herosectionImage,
+      name: "Usama Awan",
+      Subjects: ["English", "Urdu", "Physics"],
+      rating: 4.3,
+      experience: "10 Years",
+    },
+    {
+      image: herosectionImage,
+      name: "Usama Awan",
+      Subjects: ["English", "Urdu", "Physics"],
+      rating: 4.3,
+      experience: "10 Years",
+    },
+    {
+      image: herosectionImage,
+      name: "Usama Awan",
+      Subjects: ["English", "Urdu", "Physics"],
+      rating: 4.3,
+      experience: "10 Years",
+    },
+    {
+      image: herosectionImage,
+      name: "Usama Awan",
+      Subjects: ["English", "Urdu", "Physics"],
+      rating: 4.3,
+      experience: "10 Years",
+    },
+    {
+      image: herosectionImage,
+      name: "Usama Awan",
+      Subjects: ["English", "Urdu", "Physics"],
+      rating: 4.3,
+      experience: "10 Years",
+    },
+  ];
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+
     responsive: [
       {
         breakpoint: 1280, // Tailwind xl
@@ -100,19 +163,8 @@ export default function Home() {
         style={{ width: "100%", position: "relative" }}
         className="md:h-[1400px] lg:h-[700px] "
       >
-        <Background
-          // className=" bg-gradient-to-t from-black via-gray-900 to-black "
-          className="bg-gradient-to-t from-black via-gray-900 to-black "
-          particleColors={["#ffffff", "#ffffff"]}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-        <p className="absolute top-10 text-white font-semibold text-[35px] lg:text-[40px] xl:text-[50px] w-full text-center">
+        <BackgroundBeams className="absolute inset-0" />
+        <p className="absolute top-10 text-gray-600 font-semibold text-[35px] lg:text-[40px] xl:text-[50px] w-full text-center">
           WHAT WE OFFER
         </p>
 
@@ -125,91 +177,99 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="col-span-12 lg:col-span-4 flex justify-center items-center">
-              <Card
-                className="custom-spotlight-card text-white flex justify-center items-center flex-col p-6 m-4 gap-2 lg:w-full w-[60%] "
-                spotlightColor="rgba(0, 229, 255, 0.2)"
+              <motion.div
+                whileHover={{
+                  scale: 1.1, // makes it grow outward
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  },
+                }}
+                className="cursor-pointer w-[80%] shadow-lg px-[50px] py-[50px] flex flex-col justify-center items-center  bg-gray-100 rounded-2xl border-1 border-gray-200"
               >
                 <GroupIcon
                   fontSize="lg"
-                  className="text-[50px] text-white mb-4"
+                  className="text-[50px]  mb-4 text-gray-600"
                 />
-                <p className="text-[26px] xl:text-[30px] font-semibold">
+                <p className="text-[26px] xl:text-[30px] font-semibold text-gray-600">
                   Tutors
                 </p>
-                <p className=" hidden md:block text-[14px] text-gray-50 mb-[40px] ">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Necessitatibus illo quisquam dolor suscipit sequi, quo dolorem
-                  <span className="lg:hidden xl:block">
-                    perspiciatis quod accusamus id distinctio, atque, ducimus
-                    architecto voluptas consectetur! In eligendi dolores libero?
-                  </span>
-                  {"  "}
-                  <span className="inline xl:hidden">.....</span>
+                <p className=" hidden md:block text-[14px] text-gray-400 mb-[40px] text-justify">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aliquam repellendus ducimus ad cum odio commodi obcaecati
+                  nulla. Nostrum eaque odit
                 </p>
                 <Button
                   variant="contained"
                   size="medium"
-                  className="!bg-orange-400 sm:w-[50%]  md:w-[50%] lg:w-[80%] !text-[10px] sm:!text-[12px] !font-extralight mt-[20px]"
+                  className="hover:!bg-orange-400 hover:!text-white  !bg-transparent hover:!border-1 !border-orange-400 !text-orange-400 sm:w-[50%] !shadow-none md:w-[50%] lg:w-[80%] !text-[10px] sm:!text-[12px] !font-extralight mt-[20px]"
                 >
                   Explore Tutors
                 </Button>
-              </Card>
+              </motion.div>
             </div>
 
             <div className="col-span-12 lg:col-span-4 flex justify-center items-center">
-              <Card
-                className="custom-spotlight-card text-white flex justify-center items-center flex-col p-6 m-4 gap-2 w-[60%] lg:w-full"
-                spotlightColor="rgba(0, 229, 255, 0.2)"
+              <motion.div
+                whileHover={{
+                  scale: 1.1, // makes it grow outward
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  },
+                }}
+                className="cursor-pointer w-[80%] shadow-lg px-[50px] py-[50px] flex flex-col justify-center items-center  bg-gray-100 rounded-2xl border-1 border-gray-200"
               >
-                <FaChalkboardTeacher className="text-[50px] text-white mb-4" />
-                <p className="text-[26px] xl:text-[30px] font-semibold">Jobs</p>
-                <p className="hidden md:block  text-[14px] text-gray-50 mb-[40px] text-justify">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Necessitatibus illo quisquam dolor suscipit sequi, quo dolorem
-                  <span className="lg:hidden xl:block">
-                    perspiciatis quod accusamus id distinctio, atque, ducimus
-                    architecto voluptas consectetur! In eligendi dolores libero?
-                  </span>
-                  {"  "}
-                  <span className="inline xl:hidden">.....</span>
+                <FaChalkboardTeacher className="text-[50px] text-gray-600 mb-4" />
+                <p className="text-[26px] xl:text-[30px] font-semibold text-gray-600">
+                  Jobs
+                </p>
+                <p className=" hidden md:block text-[14px] text-gray-400 mb-[40px] text-justify">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aliquam repellendus ducimus ad cum odio commodi obcaecati
+                  nulla. Nostrum eaque odit
                 </p>
                 <Button
                   variant="contained"
                   size="medium"
-                  className="!bg-orange-400 sm:w-[50%]  md:w-[70%] lg:w-[80%] !text-[10px] sm:!text-[12px] !font-extralight  mt-[20px]"
+                  className="hover:!bg-orange-400 hover:!text-white  !bg-transparent hover:!border-1 !border-orange-400 !text-orange-400 sm:w-[50%] !shadow-none md:w-[50%] lg:w-[80%] !text-[10px] sm:!text-[12px] !font-extralight mt-[20px]"
                 >
                   Explore Jobs
                 </Button>
-              </Card>
+              </motion.div>
             </div>
 
             <div className="col-span-12 lg:col-span-4 flex justify-center items-center">
-              <Card
-                className="custom-spotlight-card text-white flex justify-center items-center flex-col p-6 m-4 gap-2 w-[60%] lg:w-full"
-                spotlightColor="rgba(0, 229, 255, 0.2)"
+              <motion.div
+                whileHover={{
+                  scale: 1.1, // makes it grow outward
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  },
+                }}
+                className="cursor-pointer w-[80%] shadow-lg px-[50px] py-[50px] flex flex-col justify-center items-center  bg-gray-100 rounded-2xl border-1 border-gray-200"
               >
-                <IoBookSharp className="text-[50px] text-white mb-4" />
-                <p className="text-[26px] xl:text-[30px] font-semibold">
+                <IoBookSharp className="text-[50px] text-gray-600 mb-4" />
+                <p className="text-[26px] xl:text-[30px] font-semibold text-gray-600">
                   Tutors
                 </p>
-                <p className="hidden sm:block  text-[14px] text-gray-50 mb-[40px] text-justify">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Necessitatibus illo quisquam dolor suscipit sequi, quo dolorem
-                  <span className="lg:hidden xl:block">
-                    perspiciatis quod accusamus id distinctio, atque, ducimus
-                    architecto voluptas consectetur! In eligendi dolores libero?
-                  </span>
-                  {"  "}
-                  <span className="inline xl:hidden">.....</span>
+                <p className=" hidden md:block text-[14px] text-gray-400 mb-[40px] text-justify">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aliquam repellendus ducimus ad cum odio commodi obcaecati
+                  nulla. Nostrum eaque odit
                 </p>
                 <Button
                   variant="contained"
                   size="medium"
-                  className="!bg-orange-400 sm:w-[50%] md:w-[70%] lg:w-[80%] !text-[10px] sm:!text-[12px] !font-extralight mt-[20px]"
+                  className="hover:!bg-orange-400 hover:!text-white  !bg-transparent hover:!border-1 !border-orange-400 !text-orange-400 sm:w-[50%] !shadow-none md:w-[50%] lg:w-[80%] !text-[10px] sm:!text-[12px] !font-extralight mt-[20px]"
                 >
                   Explore Courses
                 </Button>
-              </Card>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -221,26 +281,34 @@ export default function Home() {
         <p className=" text-[25px] md:text-[35px] lg:text-[40px] xl:text-[50px] font-semibold text-center">
           OUR POPULAR TEACHERS
         </p>
-        <Slider {...settings} className="mx-[-8px] lg:pt-[100px] md:pt-[60px] pt-[40px]">
-          <div className="px-[10px]">
-            <ProfileCard image={herosectionImage}  />
-          </div>
-          <div className="px-[10px]">
-            <ProfileCard image={herosectionImage} />
-          </div>
-          <div className="px-[10px]">
-            <ProfileCard image={herosectionImage} />
-          </div>
-          <div className="px-[10px]">
-            <ProfileCard image={herosectionImage} />
-          </div>
-          <div className="px-[10px]">
-            <ProfileCard image={herosectionImage} />
-          </div>
-          <div className="px-[10px]">
-            <ProfileCard image={herosectionImage} />
-          </div>
+        <Slider
+          {...settings}
+          className="mx-[-8px] lg:pt-[100px] md:pt-[60px] pt-[40px]"
+        >
+          {teachers.map((data, key) => {
+            return (
+              <div key={key} className="px-[10px]">
+                <ProfileCard
+                  image={data.image}
+                  name={data.name}
+                  rating={data.rating}
+                  subjects={data.Subjects}
+                  experience={data.experience}
+                />
+              </div>
+            );
+          })}
         </Slider>
+
+        <div className="flex justify-center items-center pt-[50px] ">
+          <Button
+            variant="contained"
+            size="medium"
+            className="!bg-orange-400 w-[10%]"
+          >
+            View All
+          </Button>
+        </div>
       </div>
     </div>
   );
