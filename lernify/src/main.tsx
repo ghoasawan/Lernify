@@ -6,13 +6,12 @@ import Footer from "./Components/footer/footer.tsx";
 import Header from "./Components/header/Header.tsx";
 import Home from "./pages/Home.tsx";
 import { BrowserRouter } from "react-router-dom";
+import Login from "./pages/Login.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <StrictMode>
-      <Header />
-      <Home />
-      <Footer />
+    <Login/>
     </StrictMode>
   </BrowserRouter>
 );
