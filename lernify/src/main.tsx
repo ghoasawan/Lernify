@@ -8,10 +8,11 @@ import Home from "./pages/Home.tsx";
 import { BrowserRouter } from "react-router-dom";
 import Login from "./pages/Login.tsx";
 import Step1 from "./Components/Signup/Step1.tsx";
+import Step2 from "./Components/Signup/Step2.tsx";
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <StrictMode>
-    <Step1/>
+    <Step2/>
     </StrictMode>
   </BrowserRouter>
 );

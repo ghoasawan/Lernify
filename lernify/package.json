@@ -26,6 +26,7 @@
     "react-native-web": "^0.21.1",
     "react-router-dom": "^7.9.1",
     "react-slick": "^0.31.0",
+    "react-tag-input": "^6.10.6",
     "slick-carousel": "^1.8.1",
     "tailwind-merge": "^3.3.1"
   },
